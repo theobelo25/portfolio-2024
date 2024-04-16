@@ -6,6 +6,11 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import SkipTo from "./components/navigation/SkipTo";
+import MainNavigation from "./components/navigation/MainNavigation";
+
+import styles from "~/styles/styles.css"
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -16,6 +21,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <SkipTo />
+        <MainNavigation />
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -26,4 +33,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return <Outlet />;
+}
+
+export function links() {
+  return [{ rel: 'stylesheet', href: styles }]
 }
